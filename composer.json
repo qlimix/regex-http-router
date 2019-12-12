@@ -1,0 +1,39 @@
+{
+    "name": "qlimix/router-qlimix",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank",
+            "email": "frank@qlimix.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Qlimix\\Router\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qlimix\\Tests\\Router\\": "tests/"
+        }
+    },
+    "require": {
+        "psr/http-server-handler": "^1.0",
+        "qlimix/router": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require-dev": {
+        "qlimix/code-standard": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:qlimix/router.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -7,9 +7,6 @@
          processIsolation="false"
          stopOnFailure="false"
          bootstrap="vendor/autoload.php"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
 >
     <testsuites>
         <testsuite name="Test">

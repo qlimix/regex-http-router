@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Tests\Router\Parser;
+namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
 use Qlimix\Router\Match\Builder;
@@ -52,7 +52,7 @@ final class BuilderTest extends TestCase
             Token::createChar('a'),
             Token::createChar('r'),
         ];
-        
+
         $parsedRoute = new Tokenized(1, $tokens);
 
         $tokens2 = [

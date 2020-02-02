@@ -2,53 +2,30 @@
 
 namespace Qlimix\Router\Match;
 
-use Exception;
-use Qlimix\Router\Match\Exception\MatchException;
-
 final class Match
 {
     private Tokens $tokens;
 
     /** @var Match[] */
-    private array $children;
+    private array $children = [];
 
-    /**
-     * @param Match[] $children
-     */
-    public function __construct(Tokens $matchedTokens, array $children)
+    public function __construct(Tokens $matchedTokens)
     {
         $this->tokens = $matchedTokens;
-        $this->children = $children;
     }
 
-    public function addChild(Match $match): void
-    {
-        $this->children[] = $match;
-    }
-
-    public function hasChild(Tokens $matchedTokens): bool
+    public function append(Tokens $tokens): self
     {
         foreach ($this->children as $child) {
-            if ($child->getTokens()->equals($matchedTokens)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function getChild(Tokens $matchedTokens): self
-    {
-        foreach ($this->children as $child) {
-            if ($child->getTokens()->equals($matchedTokens)) {
+            if ($child->getTokens()->equals($tokens)) {
                 return $child;
             }
         }
 
-        throw new MatchException('No child found');
+        $match = new Match($tokens);
+        $this->children[] = $match;
+
+        return $match;
     }
 
     public function getTokens(): Tokens
@@ -66,6 +43,6 @@ final class Match
 
     public static function createRoot(): self
     {
-        return new self(new Tokens([], null), []);
+        return new self(new Tokens([], null));
     }
 }

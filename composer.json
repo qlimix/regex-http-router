@@ -26,7 +26,7 @@
         "sort-packages": true
     },
     "require-dev": {
-        "qlimix/code-standard": "^1.0"
+        "qlimix/code-standard": "^2.0"
     },
     "repositories": [
         {

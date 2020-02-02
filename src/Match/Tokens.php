@@ -14,12 +14,15 @@ final class Tokens
     /**
      * @param Token[] $tokens
      */
-    public function __construct($tokens, ?int $id)
+    public function __construct(array $tokens, ?int $id)
     {
         $this->tokens = $tokens;
         $this->id = $id;
     }
 
+    /**
+     * @return Token[]
+     */
     public function getTokens(): array
     {
         return $this->tokens;
@@ -40,13 +43,8 @@ final class Tokens
         return $string;
     }
 
-    public function setId(int $id): void
+    public function equals(Tokens $tokens): bool
     {
-        $this->id = $id;
-    }
-
-    public function equals(Tokens $matchedTokens): bool
-    {
-        return $this->toString() === $matchedTokens->toString();
+        return $this->toString() === $tokens->toString();
     }
 }

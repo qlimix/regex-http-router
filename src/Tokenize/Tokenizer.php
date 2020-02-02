@@ -4,6 +4,7 @@ namespace Qlimix\Router\Tokenize;
 
 use Qlimix\Router\Tokenize\Exception\FailedToTokenizeException;
 use Qlimix\Router\Tokenize\Exception\TokenizerNotFoundException;
+use function strlen;
 
 final class Tokenizer
 {
@@ -26,7 +27,6 @@ final class Tokenizer
     {
         $pointer = 0;
         $length = strlen($toTokenize);
-
         $tokens = [];
 
         while ($length > $pointer) {

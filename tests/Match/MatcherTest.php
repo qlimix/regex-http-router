@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Tests\Router\Parser;
+namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
 use Qlimix\Router\Match\Exception\LastMatchException;
@@ -8,9 +8,182 @@ use Qlimix\Router\Match\Matcher;
 use Qlimix\Router\Tokenize\Token;
 use Qlimix\Router\Tokenize\Tokenized;
 
-final class MatcherWithPlaceholdersTest extends TestCase
+final class MatcherTest extends TestCase
 {
     public function testShouldMatch(): void
+    {
+        $matcher = new Matcher(
+            new Tokenized(
+                1,
+                [
+                    Token::createChar('/'),
+                    Token::createChar('f'),
+                    Token::createChar('o'),
+                    Token::createChar('o'),
+                ]
+            ),
+            [
+                new Tokenized(
+                    2,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                    ]
+                ),
+                new Tokenized(
+                    3,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                        Token::createChar('o'),
+                    ]
+                ),
+                new Tokenized(
+                    4,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                        Token::createChar('a'),
+                    ]
+                ),
+            ]
+        );
+
+        $match = $matcher->match();
+
+        $this->assertSame('/', $match->getTokens()[0]->getToken());
+        $this->assertSame('f', $match->getTokens()[1]->getToken());
+        $this->assertNull($match->getId());
+
+        $match = $matcher->match();
+
+        $this->assertSame('o', $match->getTokens()[0]->getToken());
+        $this->assertNull($match->getId());
+
+        $match = $matcher->match();
+
+        $this->assertSame('o', $match->getTokens()[0]->getToken());
+        $this->assertSame(1, $match->getId());
+    }
+
+    public function testShouldThrowLastMatchException(): void
+    {
+        $matcher = new Matcher(
+            new Tokenized(
+                1,
+                [
+                    Token::createChar('/'),
+                    Token::createChar('f'),
+                ]
+            ),
+            [
+                new Tokenized(
+                    2,
+                    [
+                        Token::createChar('/'),
+                    ]
+                )
+            ]
+        );
+
+        $match = $matcher->match();
+
+        $this->assertSame('/', $match->getTokens()[0]->getToken());
+        $this->assertNull($match->getId());
+
+
+        $match = $matcher->match();
+
+        $this->assertSame('f', $match->getTokens()[0]->getToken());
+        $this->assertSame(1, $match->getId());
+
+        $this->expectException(LastMatchException::class);
+        $matcher->match();
+    }
+
+    public function testShouldMatchWithSmallerTokenSet(): void
+    {
+        $matcher = new Matcher(
+            new Tokenized(
+                1,
+                [
+                    Token::createChar('/'),
+                    Token::createChar('f'),
+                ]
+            ),
+            [
+                new Tokenized(
+                    2,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                        Token::createChar('a'),
+                    ]
+                ),
+                new Tokenized(
+                    3,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                        Token::createChar('o'),
+                        Token::createChar('o'),
+                    ]
+                ),
+                new Tokenized(
+                    4,
+                    [
+                        Token::createChar('/'),
+                        Token::createChar('f'),
+                        Token::createChar('a'),
+                        Token::createChar('a'),
+                    ]
+                ),
+            ]
+        );
+
+        $match = $matcher->match();
+
+        $this->assertSame('/', $match->getTokens()[0]->getToken());
+        $this->assertSame('f', $match->getTokens()[1]->getToken());
+        $this->assertSame(1, $match->getId());
+    }
+
+    public function testShouldMatchWithWhileRunningOutOfTokenizeds(): void
+    {
+        $matcher = new Matcher(
+            new Tokenized(
+                1,
+                [
+                    Token::createChar('/'),
+                    Token::createChar('f'),
+                    Token::createChar('o'),
+                    Token::createChar('o'),
+                    Token::createChar('b'),
+                    Token::createChar('a'),
+                    Token::createChar('r'),
+                ]
+            ),
+            [
+                new Tokenized(
+                    3,
+                    [
+                        Token::createChar('f'),
+                    ]
+                ),
+            ]
+        );
+
+        $match = $matcher->match();
+
+        $this->assertSame('/', $match->getTokens()[0]->getToken());
+        $this->assertSame('f', $match->getTokens()[1]->getToken());
+        $this->assertSame('o', $match->getTokens()[2]->getToken());
+        $this->assertSame('o', $match->getTokens()[3]->getToken());
+        $this->assertSame(1, $match->getId());
+    }
+
+
+    public function testShouldMatch2(): void
     {
         $tokens = [
             Token::createChar('/'),

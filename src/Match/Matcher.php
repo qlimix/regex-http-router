@@ -4,8 +4,10 @@ namespace Qlimix\Router\Match;
 
 use Qlimix\Router\Match\Exception\LastMatchException;
 use Qlimix\Router\Tokenize\Tokenized;
+use function array_slice;
+use function count;
 
-final class Matcher
+final class Matcher implements MatcherInterface
 {
     private Tokenized $tokenized;
 
@@ -36,6 +38,7 @@ final class Matcher
 
         if (count($this->tokenizeds) === 0) {
             $this->last = true;
+
             return new Tokens(
                 array_slice($this->tokenized->getTokens(), $this->pointer),
                 $this->tokenized->getId()
@@ -47,11 +50,13 @@ final class Matcher
         do {
             if ($this->pointer > $this->tokenized->getTokenCount()-1) {
                 $this->last = true;
+
                 return new Tokens($matchedTokens, $this->tokenized->getId());
             }
 
             if (count($this->tokenizeds) === 0) {
                 $this->last = true;
+
                 return new Tokens(
                     array_slice($this->tokenized->getTokens(), $this->pointer),
                     $this->tokenized->getId()
@@ -59,14 +64,16 @@ final class Matcher
             }
 
             $newList = [];
-            foreach ($this->tokenizeds as $route) {
-                if ($this->pointer > $route->getTokenCount()-1) {
+            foreach ($this->tokenizeds as $tokenized) {
+                if ($this->pointer > $tokenized->getTokenCount()-1) {
                     continue;
                 }
 
-                if ($this->tokenized->getTokens()[$this->pointer]->equals($route->getTokens()[$this->pointer])) {
-                    $newList[] = $route;
+                if (!$this->tokenized->getTokens()[$this->pointer]->equals($tokenized->getTokens()[$this->pointer])) {
+                    continue;
                 }
+
+                $newList[] = $tokenized;
             }
 
             $listSize = count($this->tokenizeds);

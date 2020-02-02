@@ -4,6 +4,6 @@ namespace Qlimix\Router\Match\Exception;
 
 use Exception;
 
-final class MatchException extends Exception
+final class MatchBuilderException extends Exception
 {
 }

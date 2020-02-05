@@ -6,6 +6,7 @@ use Qlimix\Router\Container;
 use Qlimix\Router\Regex\Translator\Exception\TranslatorException;
 use Qlimix\Router\Tokenize\Token;
 use Throwable;
+use function preg_match;
 
 final class PlaceHolderTranslator implements TranslatorInterface
 {
@@ -13,9 +14,6 @@ final class PlaceHolderTranslator implements TranslatorInterface
 
     private Container $routeContainer;
 
-    /**
-     * @param Container $routeContainer
-     */
     public function __construct(Container $routeContainer)
     {
         $this->routeContainer = $routeContainer;
@@ -32,14 +30,11 @@ final class PlaceHolderTranslator implements TranslatorInterface
     public function translate(Token $token, ?int $id): string
     {
         preg_match(self::REGEX_PLACEHOLDER, $token->getToken(), $matches);
-        if (!$this->routeContainer->has($id)) {
-            throw new TranslatorException('Couldn\'t find by id');
-        }
 
         try {
             $route = $this->routeContainer->get($id);
         } catch (Throwable $exception) {
-            throw new TranslatorException('Failed to find route by id');
+            throw new TranslatorException('Failed to find route by id', 0, $exception);
         }
 
         foreach ($route->getPlaceHolders() as $placeHolder) {

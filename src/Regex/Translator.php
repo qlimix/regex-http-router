@@ -15,7 +15,7 @@ final class Translator
     /**
      * @param TranslatorInterface[] $translators
      */
-    public function __construct($translators)
+    public function __construct(array $translators)
     {
         $this->translators = $translators;
     }
@@ -25,7 +25,7 @@ final class Translator
      *
      * @throws TranslatorException
      */
-    public function escape(array $tokens, ?int $id): string
+    public function translate(array $tokens, ?int $id): string
     {
         try {
             $result = '';
@@ -33,9 +33,10 @@ final class Translator
                 foreach ($this->translators as $translator) {
                     if ($translator->can($token, $id)) {
                         $result .= $translator->translate($token, $id);
-                        break;
+                        continue 2;
                     }
                 }
+
                 $result .= $token->getToken();
             }
         } catch (Throwable $exception) {

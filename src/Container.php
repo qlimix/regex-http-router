@@ -14,17 +14,12 @@ final class Container
         $this->routes[] = $route;
     }
 
-    public function has(int $routeId): bool
-    {
-        return isset($this->routes[$routeId]);
-    }
-
     /**
      * @throws ContainerException
      */
     public function get(int $routeId): Route
     {
-        if ($this->has($routeId)) {
+        if (isset($this->routes[$routeId])) {
             return $this->routes[$routeId];
         }
 

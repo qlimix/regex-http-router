@@ -2,6 +2,8 @@
 
 namespace Qlimix\Router\Tokenize;
 
+use function strlen;
+
 final class Token
 {
     private TokenType $type;

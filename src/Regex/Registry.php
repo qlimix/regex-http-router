@@ -14,17 +14,6 @@ final class Registry
         $this->placeHolders[] = $placeHolder;
     }
 
-    public function has(string $search): bool
-    {
-        foreach ($this->placeHolders as $placeHolder) {
-            if ($placeHolder->getPlaceHolder() === $search) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     /**
      * @throws RegistryException
      */

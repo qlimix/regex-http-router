@@ -6,6 +6,7 @@ use Qlimix\Router\Regex\Exception\PlaceHolderMatchFailedException;
 use Qlimix\Router\Regex\Exception\PlaceHolderNotFoundException;
 use Qlimix\Router\Tokenize\Tokenizer;
 use Throwable;
+use function preg_match;
 
 final class PlaceHolderMatcher
 {
@@ -34,36 +35,29 @@ final class PlaceHolderMatcher
         try {
             $tokenized = $this->tokenizer->tokenize(1, $toMatch);
         } catch (Throwable $exception) {
-            throw new PlaceHolderMatchFailedException('Failed to tokenize',0 , $exception);
+            throw new PlaceHolderMatchFailedException('Failed to tokenize', 0, $exception);
         }
 
         $hold = [];
         foreach ($tokenized->getTokens() as $token) {
-            if ($token->getType()->isPlaceHolder()) {
-                preg_match(self::REGEX_PLACEHOLDER, $token->getToken(), $matches);
-                foreach ($placeHolders as $placeHolder) {
-                    if ($placeHolder->getPlaceHolder() === $matches[1]) {
-                        $hold[] = $placeHolder;
-                        continue;
-                    }
-                }
+            if (!$token->getType()->isPlaceHolder()) {
+                continue;
+            }
 
-                if ($this->registry->has($matches[1])) {
-                    try {
-                        $placeHolder = $this->registry->get($matches[1]);
-                    } catch (Throwable $exception) {
-                        throw new PlaceHolderMatchFailedException(
-                            'Failed to find placeholder in registry',
-                            0,
-                            $exception
-                        );
-                    }
+            preg_match(self::REGEX_PLACEHOLDER, $token->getToken(), $matches);
+            foreach ($placeHolders as $placeHolder) {
+                if ($placeHolder->getPlaceHolder() === $matches[1]) {
                     $hold[] = $placeHolder;
-                    continue;
+                    continue 2;
                 }
             }
 
-            throw new PlaceHolderNotFoundException('Could not find placeholder');
+            try {
+                $placeHolder = $this->registry->get($matches[1]);
+                $hold[] = $placeHolder;
+            } catch (Throwable $exception) {
+                throw new PlaceHolderNotFoundException('Could not find placeholder', 0, $exception);
+            }
         }
 
         return $hold;

@@ -3,6 +3,8 @@
 namespace Qlimix\Router\Regex;
 
 use Qlimix\Router\Match\Match;
+use function count;
+use function implode;
 
 final class Builder
 {
@@ -20,33 +22,40 @@ final class Builder
             $regex = [];
             $regex[] = '^(?|';
             $regex[] = $this->makeCaptureGroup($child, $match->getTokens()->getId());
-            $regex[] .= ')$';
+            $regex[] = ')$';
             $build[] = implode('', $regex);
         }
 
         return implode('|', $build);
     }
 
-    private function makeCaptureGroup(Match $match, ?int $routeId = null): string
+    private function makeCaptureGroup(Match $match, ?int $id): string
     {
-        $route = $this->translator->escape($match->getTokens()->getTokens(), $routeId);
+        $translated = $this->translator->translate($match->getTokens()->getTokens(), $match->getTokens()->getId());
         if (count($match->getChildren()) === 0) {
-            if ($routeId !== null) {
+            if ($id !== null) {
                 $build = [];
-                $build[] = '(*MARK:'.$routeId.')';
-                $build[] = $route.'(*MARK:'.$match->getTokens()->getId().')';
+                $build[] = '(*MARK:'.$id.')';
+                $build[] = $translated.'(*MARK:'.$match->getTokens()->getId().')';
+
                 return implode('|', $build);
             }
 
             $matchRouteId = $match->getTokens()->getId();
             if ($matchRouteId !== null) {
-                $route .= '(*MARK:'.$match->getTokens()->getId().')';
+                $translated .= '(*MARK:'.$match->getTokens()->getId().')';
             }
-            return $route;
+
+            return $translated;
         }
 
         $regex = [];
-        $regex[] = $route;
+
+        if ($id !== null) {
+            $regex[] = '(*MARK:'.$id.')|';
+        }
+
+        $regex[] = $translated;
 
         $regex[] = '(?|';
         $build = [];

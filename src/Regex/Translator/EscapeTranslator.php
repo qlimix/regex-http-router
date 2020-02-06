@@ -3,10 +3,11 @@
 namespace Qlimix\Router\Regex\Translator;
 
 use Qlimix\Router\Tokenize\Token;
+use function in_array;
 
 final class EscapeTranslator implements TranslatorInterface
 {
-    private const CHARS = ['/', '.', '+', '?', '-'];
+    private const CHARS = ['/', '\\', '.', '+', '?', '-', '*', '[', ']', '(', ')'];
 
     private const ESCAPE_CHAR = '\\';
 

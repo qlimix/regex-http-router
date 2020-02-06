@@ -43,6 +43,6 @@ final class PlaceHolderTranslator implements TranslatorInterface
             }
         }
 
-        return '';
+        throw new TranslatorException('Failed to find placeholder');
     }
 }

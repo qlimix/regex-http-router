@@ -3,6 +3,7 @@
 namespace Qlimix\Router\Tokenize;
 
 use Qlimix\Router\Tokenize\Exception\FailedToTokenizeException;
+use function strlen;
 
 final class PlaceHolderTokenizer implements TokenizerInterface
 {
@@ -26,10 +27,10 @@ final class PlaceHolderTokenizer implements TokenizerInterface
             $char = $value[$pointer];
             $token .= $char;
             $pointer++;
-            if ($pointer > $length) {
+            if ($char !== self::PLACEHOLDER_END && $pointer >= $length) {
                 throw new FailedToTokenizeException('Unclosed placeholder');
             }
-        } while($char !== self::PLACEHOLDER_END);
+        } while ($char !== self::PLACEHOLDER_END);
 
         return Token::createPlaceholder($token);
     }

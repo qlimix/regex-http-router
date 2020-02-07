@@ -1,13 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Configurator;
+namespace Qlimix\Router;
 
-use Qlimix\Router\Container;
 use Qlimix\Router\Exception\ConfigurationException;
-use Qlimix\Router\Method;
 use Qlimix\Router\Regex\PlaceHolder;
 use Qlimix\Router\Regex\PlaceHolderMatcher;
-use Qlimix\Router\Route;
 use Throwable;
 
 final class Configurator
@@ -15,6 +12,12 @@ final class Configurator
     private Container $container;
 
     private PlaceHolderMatcher $matcher;
+
+    public function __construct(Container $container, PlaceHolderMatcher $matcher)
+    {
+        $this->container = $container;
+        $this->matcher = $matcher;
+    }
 
     /**
      * @param PlaceHolder[] $placeHolders
@@ -33,7 +36,7 @@ final class Configurator
      */
     public function get(string $path, string $handler, array $placeHolders = []): void
     {
-        $this->map(Method::createGet(), $path(), $handler, $placeHolders);
+        $this->map(Method::createGet(), $path, $handler, $placeHolders);
     }
 
     /**
@@ -53,7 +56,7 @@ final class Configurator
      */
     public function put(string $path, string $handler, array $placeHolders = []): void
     {
-        $this->map(Method::createPut(), $path(), $handler, $placeHolders);
+        $this->map(Method::createPut(), $path, $handler, $placeHolders);
     }
 
     /**
@@ -91,10 +94,10 @@ final class Configurator
      *
      * @throws ConfigurationException
      */
-    private function map( Method $method, string $path, string $handler, array $placeHolders = []): void
+    private function map(Method $method, string $path, string $handler, array $placeHolders = []): void
     {
         try {
-            $this->container->add(new Route($method, $path, $handler, $this->matcher->match($path, $placeHolders)));
+            $this->container->add(new HttpRoute($method, $path, $handler, $this->matcher->match($path, $placeHolders)));
         } catch (Throwable $exception) {
             throw new ConfigurationException('Failed to configure route', 0, $exception);
         }

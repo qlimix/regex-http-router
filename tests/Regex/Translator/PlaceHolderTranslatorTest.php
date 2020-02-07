@@ -8,7 +8,7 @@ use Qlimix\Router\Method;
 use Qlimix\Router\Regex\PlaceHolder;
 use Qlimix\Router\Regex\Translator\Exception\TranslatorException;
 use Qlimix\Router\Regex\Translator\PlaceHolderTranslator;
-use Qlimix\Router\Route;
+use Qlimix\Router\HttpRoute;
 use Qlimix\Router\Tokenize\Token;
 
 final class PlaceHolderTranslatorTest extends TestCase
@@ -29,7 +29,7 @@ final class PlaceHolderTranslatorTest extends TestCase
 
         $regex = '([\d]+)';
         $this->container->add(
-            new Route(Method::createGet(), '', '', [new PlaceHolder('id', $regex)])
+            new HttpRoute(Method::createGet(), '', '', [new PlaceHolder('id', $regex)])
         );
 
         $this->assertTrue($this->placeholderTranslator->can($token, 0));
@@ -50,7 +50,7 @@ final class PlaceHolderTranslatorTest extends TestCase
 
         $regex = '([\d]+)';
         $this->container->add(
-            new Route(Method::createGet(), '', '', [new PlaceHolder('foo', $regex)])
+            new HttpRoute(Method::createGet(), '', '', [new PlaceHolder('foo', $regex)])
         );
 
         $this->assertTrue($this->placeholderTranslator->can($token, 1));
@@ -65,7 +65,7 @@ final class PlaceHolderTranslatorTest extends TestCase
 
         $regex = '([\d]+)';
         $this->container->add(
-            new Route(Method::createGet(), '', '', [new PlaceHolder('foo', $regex)])
+            new HttpRoute(Method::createGet(), '', '', [new PlaceHolder('foo', $regex)])
         );
 
         $this->assertTrue($this->placeholderTranslator->can($token, 0));

@@ -46,7 +46,7 @@ final class PlaceHolderMatcher
 
             preg_match(self::REGEX_PLACEHOLDER, $token->getToken(), $matches);
             foreach ($placeHolders as $placeHolder) {
-                if ($placeHolder->getPlaceHolder() === $matches[1]) {
+                if ($placeHolder->getName() === $matches[1]) {
                     $hold[] = $placeHolder;
                     continue 2;
                 }

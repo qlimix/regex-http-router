@@ -38,7 +38,7 @@ final class PlaceHolderTranslator implements TranslatorInterface
         }
 
         foreach ($route->getPlaceHolders() as $placeHolder) {
-            if ($placeHolder->getPlaceHolder() === $matches[1]) {
+            if ($placeHolder->getName() === $matches[1]) {
                 return $placeHolder->getRegex();
             }
         }

@@ -4,19 +4,19 @@ namespace Qlimix\Router\Regex;
 
 final class PlaceHolder
 {
-    private string $placeHolder;
+    private string $name;
 
     private string $regex;
 
-    public function __construct(string $placeHolder, string $regex)
+    public function __construct(string $name, string $regex)
     {
-        $this->placeHolder = $placeHolder;
+        $this->name = $name;
         $this->regex = $regex;
     }
 
-    public function getPlaceHolder(): string
+    public function getName(): string
     {
-        return $this->placeHolder;
+        return $this->name;
     }
 
     public function getRegex(): string

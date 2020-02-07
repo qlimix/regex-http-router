@@ -11,7 +11,7 @@ use Qlimix\Router\Regex\Translator\EscapeTranslator;
 use Qlimix\Router\Regex\Translator\Exception\TranslatorException;
 use Qlimix\Router\Regex\Translator\PlaceHolderTranslator;
 use Qlimix\Router\Regex\Translator\TranslatorInterface;
-use Qlimix\Router\Route;
+use Qlimix\Router\HttpRoute;
 use Qlimix\Router\Tokenize\Token;
 
 final class TranslatorTest extends TestCase
@@ -20,7 +20,7 @@ final class TranslatorTest extends TestCase
     {
         $container = new Container();
         $container->add(
-            new Route(Method::createGet(), '', '', [new PlaceHolder('id', '([\d]+)')])
+            new HttpRoute(Method::createGet(), '', '', [new PlaceHolder('id', '([\d]+)')])
         );
 
         $translator = new Translator([

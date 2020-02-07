@@ -20,7 +20,7 @@ final class Registry
     public function get(string $search): PlaceHolder
     {
         foreach ($this->placeHolders as $placeHolder) {
-            if ($placeHolder->getPlaceHolder() === $search) {
+            if ($placeHolder->getName() === $search) {
                 return $placeHolder;
             }
         }

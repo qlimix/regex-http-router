@@ -13,7 +13,7 @@ final class PlaceHolderTest extends TestCase
         $regex = 'regex';
         $placeHolder = new PlaceHolder($foobar, $regex);
 
-        $this->assertSame($foobar, $placeHolder->getPlaceHolder());
+        $this->assertSame($foobar, $placeHolder->getName());
         $this->assertSame($regex, $placeHolder->getRegex());
     }
 }

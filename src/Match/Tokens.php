@@ -2,6 +2,7 @@
 
 namespace Qlimix\Router\Match;
 
+use Qlimix\Router\Match\Exception\TokensException;
 use Qlimix\Router\Tokenize\Token;
 
 final class Tokens
@@ -46,5 +47,17 @@ final class Tokens
     public function equals(Tokens $tokens): bool
     {
         return $this->toString() === $tokens->toString();
+    }
+
+    /**
+     * @throws TokensException
+     */
+    public function promote(int $id): void
+    {
+        if ($this->id !== null) {
+            throw new TokensException('Can\'t overwrite id once set, double match?');
+        }
+
+        $this->id = $id;
     }
 }

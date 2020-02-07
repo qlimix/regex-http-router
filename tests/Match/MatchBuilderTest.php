@@ -6,44 +6,91 @@ use PHPUnit\Framework\TestCase;
 use Qlimix\Router\Match\Builder;
 use Qlimix\Router\Match\Exception\MatchBuilderException;
 use Qlimix\Router\Match\MatchBuilder;
+use Qlimix\Router\Match\MatcherIteratorFactory;
 use Qlimix\Router\Method;
-use Qlimix\Router\Route;
+use Qlimix\Router\HttpRoute;
 use Qlimix\Router\Tokenize\Token;
 use Qlimix\Router\Tokenize\Tokenizer;
 use Qlimix\Router\Tokenize\TokenizerInterface;
 
 final class MatchBuilderTest extends TestCase
 {
+    private MatcherIteratorFactory $iteratorFactory;
+
+    protected function setUp(): void
+    {
+        $this->iteratorFactory = new MatcherIteratorFactory();
+    }
+
     public function testShouldBuildMatch(): void
     {
         $tokenizer = $this->createMock(TokenizerInterface::class);
-        $tokenizer->expects($this->once())
+        $tokenizer->expects($this->exactly(4))
             ->method('canTokenize')
             ->willReturn(true);
 
-        $tokenizer->expects($this->once())
+        $tokenizer->expects($this->exactly(4))
             ->method('tokenize')
-            ->willReturn(Token::createChar('/'));
+            ->willReturn(
+                Token::createChar('g'),
+                Token::createChar('e'),
+                Token::createChar('t'),
+                Token::createChar('/'),
+            );
 
-        $matchBuilder = new MatchBuilder(new Builder(), new Tokenizer([$tokenizer]));
+        $matchBuilder = new MatchBuilder(new Builder($this->iteratorFactory), new Tokenizer([$tokenizer]));
 
-        $matchBuilder->build([
-            new Route(Method::createGet(), '/', 'foo', []),
+        $match = $matchBuilder->build([
+            new HttpRoute(Method::createGet(), '/', 'foo', []),
         ]);
+
+        $this->assertSame('g', $match->getChildren()[0]->getTokens()->getTokens()[0]->getToken());
+        $this->assertSame('e', $match->getChildren()[0]->getTokens()->getTokens()[1]->getToken());
+        $this->assertSame('t', $match->getChildren()[0]->getTokens()->getTokens()[2]->getToken());
+        $this->assertSame('/', $match->getChildren()[0]->getTokens()->getTokens()[3]->getToken());
     }
 
-    public function testShouldThrowExceptionOnNoTokenizerFound(): void
+    public function testShouldThrowOnNoTokenizerFound(): void
     {
         $tokenizer = $this->createMock(TokenizerInterface::class);
         $tokenizer->expects($this->once())
             ->method('canTokenize')
             ->willReturn(false);
 
-        $matchBuilder = new MatchBuilder(new Builder(), new Tokenizer([$tokenizer]));
+        $matchBuilder = new MatchBuilder(new Builder($this->iteratorFactory), new Tokenizer([$tokenizer]));
 
         $this->expectException(MatchBuilderException::class);
         $matchBuilder->build([
-            new Route(Method::createGet(), '/', 'foo', []),
+            new HttpRoute(Method::createGet(), '/', 'foo', []),
+        ]);
+    }
+
+    public function testShouldThrowOnBuilderException(): void
+    {
+        $tokenizer = $this->createMock(TokenizerInterface::class);
+        $tokenizer->expects($this->exactly(8))
+            ->method('canTokenize')
+            ->willReturn(true);
+
+        $tokenizer->expects($this->exactly(8))
+            ->method('tokenize')
+            ->willReturn(
+                Token::createChar('g'),
+                Token::createChar('e'),
+                Token::createChar('t'),
+                Token::createChar('/'),
+                Token::createChar('g'),
+                Token::createChar('e'),
+                Token::createChar('t'),
+                Token::createChar('/'),
+            );
+
+        $matchBuilder = new MatchBuilder(new Builder($this->iteratorFactory), new Tokenizer([$tokenizer]));
+
+        $this->expectException(MatchBuilderException::class);
+        $matchBuilder->build([
+            new HttpRoute(Method::createGet(), '/', 'foo', []),
+            new HttpRoute(Method::createGet(), '/', 'foo', []),
         ]);
     }
 }

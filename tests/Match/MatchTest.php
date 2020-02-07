@@ -3,6 +3,7 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
+use Qlimix\Router\Match\Exception\MatchException;
 use Qlimix\Router\Match\Match;
 use Qlimix\Router\Match\Tokens;
 use Qlimix\Router\Tokenize\Token;
@@ -36,13 +37,23 @@ final class MatchTest extends TestCase
         $match = Match::createRoot();
 
         $match->append(new Tokens([Token::createChar('f')], 1));
-        $match->append(new Tokens([Token::createChar('f')], 1));
+        $match->append(new Tokens([Token::createChar('f')], null));
+        $match->append(new Tokens([Token::createChar('f'), Token::createChar('e')], null));
 
         $this->assertSame($match->getChildren()[0]->getTokens()->getTokens()[0]->getToken(), 'f');
         $this->assertTrue(
             $match->getChildren()[0]->getTokens()->getTokens()[0]->getType()->equals(TokenType::createChar())
         );
 
-        $this->assertCount(1, $match->getChildren());
+        $this->assertCount(2, $match->getChildren());
+    }
+
+    public function testShouldThrowOnAlreadyPromotedTokens(): void
+    {
+        $match = Match::createRoot();
+
+        $match->append(new Tokens([Token::createChar('f')], 1));
+        $this->expectException(MatchException::class);
+        $match->append(new Tokens([Token::createChar('f')], 1));
     }
 }

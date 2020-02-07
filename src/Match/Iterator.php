@@ -2,7 +2,9 @@
 
 namespace Qlimix\Router\Match;
 
+use Qlimix\Router\Match\Exception\IteratorException;
 use Qlimix\Router\Match\Exception\LastMatchException;
+use Throwable;
 
 final class Iterator
 {
@@ -13,6 +15,9 @@ final class Iterator
         $this->matcher = $matcher;
     }
 
+    /**
+     * @throws IteratorException
+     */
     public function iterate(Match $match): void
     {
         try {
@@ -21,7 +26,11 @@ final class Iterator
             return;
         }
 
-        $next = $match->append($tokens);
+        try {
+            $next = $match->append($tokens);
+        } catch (Throwable $exception) {
+            throw new IteratorException('Failed to append child', 0, $exception);
+        }
 
         if ($tokens->getId() !== null) {
             return;

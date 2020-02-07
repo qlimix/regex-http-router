@@ -4,6 +4,7 @@ namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Qlimix\Router\Match\Exception\IteratorException;
 use Qlimix\Router\Match\Exception\LastMatchException;
 use Qlimix\Router\Match\Iterator;
 use Qlimix\Router\Match\Match;
@@ -103,6 +104,32 @@ final class IteratorTest extends TestCase
 
         $match = Match::createRoot();
 
+        $this->iterator->iterate($match);
+    }
+
+    public function testShouldThrowOnMatchAppendingException(): void
+    {
+
+        $match = Match::createRoot();
+        $match->append(new Tokens(
+            [
+                Token::createChar('/'),
+            ],
+            1
+        ));
+
+        $this->matcher->expects($this->exactly(1))
+            ->method('match')
+            ->willReturn(
+                new Tokens(
+                    [
+                        Token::createChar('/'),
+                    ],
+                    1
+                ),
+            );
+
+        $this->expectException(IteratorException::class);
         $this->iterator->iterate($match);
     }
 }

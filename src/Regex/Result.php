@@ -12,7 +12,7 @@ final class Result
     /**
      * @param string[] $parameters
      */
-    public function __construct(int $id, $parameters)
+    public function __construct(int $id, array $parameters)
     {
         $this->id = $id;
         $this->parameters = $parameters;
@@ -23,6 +23,9 @@ final class Result
         return $this->id;
     }
 
+    /**
+     * @return string[]
+     */
     public function getParameters(): array
     {
         return $this->parameters;

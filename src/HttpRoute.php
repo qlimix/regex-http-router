@@ -4,7 +4,7 @@ namespace Qlimix\Router;
 
 use Qlimix\Router\Regex\PlaceHolder;
 
-final class Route
+final class HttpRoute
 {
     private Method $method;
 
@@ -15,6 +15,9 @@ final class Route
     /** @var PlaceHolder[] */
     private array $placeHolders;
 
+    /**
+     * @param PlaceHolder[] $placeHolders
+     */
     public function __construct(
         Method $method,
         string $path,
@@ -52,6 +55,6 @@ final class Route
 
     public function toString(): string
     {
-        return $this->path;
+        return $this->method->toString().$this->path;
     }
 }

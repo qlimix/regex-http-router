@@ -31,7 +31,7 @@ final class PlaceHolderMatcherTest extends TestCase
 
         $result = $placeHolderMatcher->match('/foo/{id}', [$placeHolder]);
 
-        $this->assertSame($placeHolderName, $result[0]->getPlaceHolder());
+        $this->assertSame($placeHolderName, $result[0]->getName());
         $this->assertSame($regex, $result[0]->getRegex());
     }
 
@@ -53,7 +53,7 @@ final class PlaceHolderMatcherTest extends TestCase
 
         $result = $placeHolderMatcher->match('/foo/{id}', []);
 
-        $this->assertSame($placeHolderName, $result[0]->getPlaceHolder());
+        $this->assertSame($placeHolderName, $result[0]->getName());
         $this->assertSame($regex, $result[0]->getRegex());
     }
 

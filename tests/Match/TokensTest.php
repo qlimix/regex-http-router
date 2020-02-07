@@ -3,6 +3,7 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
+use Qlimix\Router\Match\Exception\TokensException;
 use Qlimix\Router\Match\Tokens;
 use Qlimix\Router\Tokenize\Token;
 
@@ -40,5 +41,34 @@ final class TokensTest extends TestCase
             ],
             null
         )));
+    }
+
+    public function testShouldCanPromote(): void
+    {
+        $tokens = new Tokens(
+            [
+                Token::createChar('/'),
+                Token::createChar('f'),
+            ],
+            null
+        );
+
+        $tokens->promote(1);
+        $this->assertSame(1, $tokens->getId());
+    }
+
+    public function testShouldThrowOnAlreadyPromoted(): void
+    {
+        $tokens = new Tokens(
+            [
+                Token::createChar('/'),
+                Token::createChar('f'),
+            ],
+            null
+        );
+
+        $tokens->promote(1);
+        $this->expectException(TokensException::class);
+        $tokens->promote(2);
     }
 }

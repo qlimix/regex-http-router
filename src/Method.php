@@ -98,4 +98,9 @@ final class Method
     {
         return $this->method;
     }
+
+    public function toString(): string
+    {
+        return $this->method;
+    }
 }

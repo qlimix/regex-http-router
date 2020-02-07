@@ -2,6 +2,9 @@
 
 namespace Qlimix\Router\Match;
 
+use Qlimix\Router\Match\Exception\MatchException;
+use Throwable;
+
 final class Match
 {
     private Tokens $tokens;
@@ -14,12 +17,25 @@ final class Match
         $this->tokens = $matchedTokens;
     }
 
+    /**
+     * @throws MatchException
+     */
     public function append(Tokens $tokens): self
     {
         foreach ($this->children as $child) {
-            if ($child->getTokens()->equals($tokens)) {
-                return $child;
+            if (!$child->getTokens()->equals($tokens)) {
+                continue;
             }
+
+            if ($tokens->getId() !== null) {
+                try {
+                    $child->tokens->promote($tokens->getId());
+                } catch (Throwable $exception) {
+                    throw new MatchException('Failed to promote tokens with id', 0, $exception);
+                }
+            }
+
+            return $child;
         }
 
         $match = new Match($tokens);

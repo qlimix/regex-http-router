@@ -12,7 +12,7 @@ use Qlimix\Router\Regex\PlaceHolder;
 use Qlimix\Router\Regex\Translator;
 use Qlimix\Router\Regex\Translator\EscapeTranslator;
 use Qlimix\Router\Regex\Translator\PlaceHolderTranslator;
-use Qlimix\Router\Route;
+use Qlimix\Router\HttpRoute;
 use Qlimix\Router\Tokenize\Token;
 
 final class BuilderTest extends TestCase
@@ -22,17 +22,17 @@ final class BuilderTest extends TestCase
         $routeContainer = new Container();
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo', 'foo', [])
+            new HttpRoute(Method::createGet(), '/foo', 'foo', [])
         );
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo/{id}', 'foo.id', [
+            new HttpRoute(Method::createGet(), '/foo/{id}', 'foo.id', [
                 new PlaceHolder('id', '([\d]+)')
             ])
         );
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo/bar', 'foo.bar', [])
+            new HttpRoute(Method::createGet(), '/foo/bar', 'foo.bar', [])
         );
 
         $match = Match::createRoot();
@@ -81,15 +81,15 @@ final class BuilderTest extends TestCase
         $routeContainer = new Container();
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo', 'foo', [])
+            new HttpRoute(Method::createGet(), '/foo', 'foo', [])
         );
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo/bar', 'foo.bar', [])
+            new HttpRoute(Method::createGet(), '/foo/bar', 'foo.bar', [])
         );
 
         $routeContainer->add(
-            new Route(Method::createGet(), '/foo/{id}', 'foo.id', [
+            new HttpRoute(Method::createGet(), '/foo/{id}', 'foo.id', [
                 new PlaceHolder('id', '([\d]+)')
             ])
         );

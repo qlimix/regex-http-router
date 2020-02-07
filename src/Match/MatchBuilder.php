@@ -2,8 +2,8 @@
 
 namespace Qlimix\Router\Match;
 
+use Qlimix\Router\HttpRoute;
 use Qlimix\Router\Match\Exception\MatchBuilderException;
-use Qlimix\Router\Route;
 use Qlimix\Router\Tokenize\Tokenizer;
 use Throwable;
 
@@ -20,7 +20,7 @@ final class MatchBuilder
     }
 
     /**
-     * @param Route[] $routes
+     * @param HttpRoute[] $routes
      *
      * @throws MatchBuilderException
      */
@@ -29,12 +29,16 @@ final class MatchBuilder
         $tokenizedRoutes = [];
         foreach ($routes as $index => $route) {
             try {
-                $tokenizedRoutes[] = $this->tokenizer->tokenize($index, $route->getPath());
+                $tokenizedRoutes[] = $this->tokenizer->tokenize($index, $route->toString());
             } catch (Throwable $exception) {
                 throw new MatchBuilderException('Failed to tokenize route', 0, $exception);
             }
         }
 
-        return $this->builder->build($tokenizedRoutes);
+        try {
+            return $this->builder->build($tokenizedRoutes);
+        } catch (Throwable $exception) {
+            throw new MatchBuilderException('Failed to build', 0, $exception);
+        }
     }
 }

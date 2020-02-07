@@ -20,7 +20,7 @@ final class RegistryTest extends TestCase
 
         $fromRegistry = $registry->get($placeHolderName);
 
-        $this->assertSame($placeHolderName, $fromRegistry->getPlaceHolder());
+        $this->assertSame($placeHolderName, $fromRegistry->getName());
         $this->assertSame($regex, $fromRegistry->getRegex());
     }
 

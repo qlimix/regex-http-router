@@ -3,8 +3,8 @@
 namespace Qlimix\Tests\Router\Regex\Translator;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Regex\Translator\EscapeTranslator;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Regex\Translator\EscapeTranslator;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class EscapeTranslatorTest extends TestCase
 {

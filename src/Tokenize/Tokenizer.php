@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Tokenize;
+namespace Qlimix\Http\Router\Tokenize;
 
-use Qlimix\Router\Tokenize\Exception\FailedToTokenizeException;
-use Qlimix\Router\Tokenize\Exception\TokenizerNotFoundException;
+use Qlimix\Http\Router\Tokenize\Exception\FailedToTokenizeException;
+use Qlimix\Http\Router\Tokenize\Exception\TokenizerNotFoundException;
 use function strlen;
 
 final class Tokenizer

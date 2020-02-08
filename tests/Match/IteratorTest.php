@@ -4,13 +4,13 @@ namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Exception\IteratorException;
-use Qlimix\Router\Match\Exception\LastMatchException;
-use Qlimix\Router\Match\Iterator;
-use Qlimix\Router\Match\Match;
-use Qlimix\Router\Match\MatcherInterface;
-use Qlimix\Router\Match\Tokens;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Match\Exception\IteratorException;
+use Qlimix\Http\Router\Match\Exception\LastMatchException;
+use Qlimix\Http\Router\Match\Iterator;
+use Qlimix\Http\Router\Match\Match;
+use Qlimix\Http\Router\Match\MatcherInterface;
+use Qlimix\Http\Router\Match\Tokens;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class IteratorTest extends TestCase
 {

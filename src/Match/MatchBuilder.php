@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Match\Exception\MatchBuilderException;
-use Qlimix\Router\Tokenize\Tokenizer;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Match\Exception\MatchBuilderException;
+use Qlimix\Http\Router\Tokenize\Tokenizer;
 use Throwable;
 
 final class MatchBuilder

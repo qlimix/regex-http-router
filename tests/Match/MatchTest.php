@@ -3,11 +3,11 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Exception\MatchException;
-use Qlimix\Router\Match\Match;
-use Qlimix\Router\Match\Tokens;
-use Qlimix\Router\Tokenize\Token;
-use Qlimix\Router\Tokenize\TokenType;
+use Qlimix\Http\Router\Match\Exception\MatchException;
+use Qlimix\Http\Router\Match\Match;
+use Qlimix\Http\Router\Match\Tokens;
+use Qlimix\Http\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\TokenType;
 
 final class MatchTest extends TestCase
 {

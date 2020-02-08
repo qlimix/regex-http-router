@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Tokenize;
+namespace Qlimix\Http\Router\Tokenize;
 
-use Qlimix\Router\Tokenize\Exception\FailedToTokenizeException;
+use Qlimix\Http\Router\Tokenize\Exception\FailedToTokenizeException;
 use function strlen;
 
 final class PlaceHolderTokenizer implements TokenizerInterface

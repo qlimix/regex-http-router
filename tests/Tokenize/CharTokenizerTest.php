@@ -3,8 +3,8 @@
 namespace Qlimix\Tests\Router\Tokenize;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Tokenize\CharTokenizer;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\CharTokenizer;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class CharTokenizerTest extends TestCase
 {

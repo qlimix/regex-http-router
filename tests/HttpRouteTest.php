@@ -3,9 +3,9 @@
 namespace Qlimix\Tests\Router;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Method;
-use Qlimix\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\Regex\PlaceHolder;
 
 final class HttpRouteTest extends TestCase
 {

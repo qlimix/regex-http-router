@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex;
+namespace Qlimix\Http\Router\Regex;
 
-use Qlimix\Router\Match\Match;
+use Qlimix\Http\Router\Match\Match;
 use function count;
 use function implode;
 

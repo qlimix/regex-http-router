@@ -3,7 +3,7 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\PlaceHolder;
 
 final class PlaceHolderTest extends TestCase
 {

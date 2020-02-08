@@ -4,14 +4,14 @@ namespace Qlimix\Tests\Router;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
-use Qlimix\Router\Container;
-use Qlimix\Router\Exception\RouteNotFoundException;
-use Qlimix\Router\Exception\RouterException;
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Method;
-use Qlimix\Router\RegexHttpRouter;
-use Qlimix\Router\Regex\Matcher;
-use Qlimix\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Container;
+use Qlimix\Http\Router\Exception\RouteNotFoundException;
+use Qlimix\Http\Router\Exception\RouterException;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\RegexHttpRouter;
+use Qlimix\Http\Router\Regex\Matcher;
+use Qlimix\Http\Router\Regex\PlaceHolder;
 
 final class RegexHttpRouterTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\Match\Exception\TokensException;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Match\Exception\TokensException;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class Tokens
 {

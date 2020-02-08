@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex;
+namespace Qlimix\Http\Router\Regex;
 
-use Qlimix\Router\Regex\Exception\RegistryException;
+use Qlimix\Http\Router\Regex\Exception\RegistryException;
 
 final class Registry
 {

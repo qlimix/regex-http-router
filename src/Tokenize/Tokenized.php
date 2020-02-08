@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Tokenize;
+namespace Qlimix\Http\Router\Tokenize;
+
+use function count;
 
 final class Tokenized
 {

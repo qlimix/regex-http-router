@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\Tokenize\Tokenized;
+use Qlimix\Http\Router\Tokenize\Tokenized;
 
 interface IteratorFactory
 {

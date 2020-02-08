@@ -3,16 +3,16 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Container;
-use Qlimix\Router\Method;
-use Qlimix\Router\Regex\PlaceHolder;
-use Qlimix\Router\Regex\Translator;
-use Qlimix\Router\Regex\Translator\EscapeTranslator;
-use Qlimix\Router\Regex\Translator\Exception\TranslatorException;
-use Qlimix\Router\Regex\Translator\PlaceHolderTranslator;
-use Qlimix\Router\Regex\Translator\TranslatorInterface;
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Container;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\Translator;
+use Qlimix\Http\Router\Regex\Translator\EscapeTranslator;
+use Qlimix\Http\Router\Regex\Translator\Exception\TranslatorException;
+use Qlimix\Http\Router\Regex\Translator\PlaceHolderTranslator;
+use Qlimix\Http\Router\Regex\Translator\TranslatorInterface;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class TranslatorTest extends TestCase
 {

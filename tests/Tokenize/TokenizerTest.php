@@ -3,11 +3,11 @@
 namespace Qlimix\Tests\Router\Tokenize;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Tokenize\CharTokenizer;
-use Qlimix\Router\Tokenize\Exception\TokenizerNotFoundException;
-use Qlimix\Router\Tokenize\PlaceHolderTokenizer;
-use Qlimix\Router\Tokenize\Token;
-use Qlimix\Router\Tokenize\Tokenizer;
+use Qlimix\Http\Router\Tokenize\CharTokenizer;
+use Qlimix\Http\Router\Tokenize\Exception\TokenizerNotFoundException;
+use Qlimix\Http\Router\Tokenize\PlaceHolderTokenizer;
+use Qlimix\Http\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Tokenizer;
 
 final class TokenizerTest extends TestCase
 {

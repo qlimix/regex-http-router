@@ -3,7 +3,7 @@
 namespace Qlimix\Tests\Router;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Method;
+use Qlimix\Http\Router\Method;
 
 final class MethodTest extends TestCase
 {

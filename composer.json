@@ -1,5 +1,5 @@
 {
-    "name": "qlimix/router-qlimix",
+    "name": "qlimix/regex-http-router",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,30 +10,23 @@
     ],
     "autoload": {
         "psr-4": {
-            "Qlimix\\Router\\": "src/"
+            "Qlimix\\Http\\Router\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Qlimix\\Tests\\Router\\": "tests/"
+            "Qlimix\\Tests\\Http\\Router\\": "tests/"
         }
     },
     "require": {
+        "php": "^7.4",
         "psr/http-server-handler": "^1.0",
-        "qlimix/router": "dev-version-2"
-    },
-    "config": {
-        "sort-packages": true
+        "qlimix/http-router": "^2.0"
     },
     "require-dev": {
         "qlimix/code-standard": "^2.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:qlimix/router.git"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "config": {
+        "sort-packages": true
+    }
 }

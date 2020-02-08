@@ -3,15 +3,15 @@
 namespace Qlimix\Tests\Router;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Configurator;
-use Qlimix\Router\Container;
-use Qlimix\Router\Exception\ConfigurationException;
-use Qlimix\Router\Regex\PlaceHolder;
-use Qlimix\Router\Regex\PlaceHolderMatcher;
-use Qlimix\Router\Regex\Registry;
-use Qlimix\Router\Tokenize\CharTokenizer;
-use Qlimix\Router\Tokenize\PlaceHolderTokenizer;
-use Qlimix\Router\Tokenize\Tokenizer;
+use Qlimix\Http\Router\Configurator;
+use Qlimix\Http\Router\Container;
+use Qlimix\Http\Router\Exception\ConfigurationException;
+use Qlimix\Http\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\PlaceHolderMatcher;
+use Qlimix\Http\Router\Regex\Registry;
+use Qlimix\Http\Router\Tokenize\CharTokenizer;
+use Qlimix\Http\Router\Tokenize\PlaceHolderTokenizer;
+use Qlimix\Http\Router\Tokenize\Tokenizer;
 
 final class ConfiguratorTest extends TestCase
 {

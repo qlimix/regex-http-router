@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\Match\Exception\BuilderException;
-use Qlimix\Router\Tokenize\Tokenized;
+use Qlimix\Http\Router\Match\Exception\BuilderException;
+use Qlimix\Http\Router\Tokenize\Tokenized;
 use Throwable;
 
 final class Builder

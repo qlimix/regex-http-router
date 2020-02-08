@@ -3,9 +3,9 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Regex\Exception\RegistryException;
-use Qlimix\Router\Regex\PlaceHolder;
-use Qlimix\Router\Regex\Registry;
+use Qlimix\Http\Router\Regex\Exception\RegistryException;
+use Qlimix\Http\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\Registry;
 
 final class RegistryTest extends TestCase
 {

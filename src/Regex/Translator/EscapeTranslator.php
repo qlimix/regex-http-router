@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex\Translator;
+namespace Qlimix\Http\Router\Regex\Translator;
 
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Token;
 use function in_array;
 
 final class EscapeTranslator implements TranslatorInterface

@@ -3,9 +3,9 @@
 namespace Qlimix\Tests\Router\Tokenize;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Tokenize\Exception\FailedToTokenizeException;
-use Qlimix\Router\Tokenize\PlaceHolderTokenizer;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Exception\FailedToTokenizeException;
+use Qlimix\Http\Router\Tokenize\PlaceHolderTokenizer;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class PlaceHolderTokenizerTest extends TestCase
 {

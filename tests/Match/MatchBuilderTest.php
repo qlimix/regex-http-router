@@ -3,15 +3,15 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Builder;
-use Qlimix\Router\Match\Exception\MatchBuilderException;
-use Qlimix\Router\Match\MatchBuilder;
-use Qlimix\Router\Match\MatcherIteratorFactory;
-use Qlimix\Router\Method;
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Tokenize\Token;
-use Qlimix\Router\Tokenize\Tokenizer;
-use Qlimix\Router\Tokenize\TokenizerInterface;
+use Qlimix\Http\Router\Match\Builder;
+use Qlimix\Http\Router\Match\Exception\MatchBuilderException;
+use Qlimix\Http\Router\Match\MatchBuilder;
+use Qlimix\Http\Router\Match\MatcherIteratorFactory;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Tokenizer;
+use Qlimix\Http\Router\Tokenize\TokenizerInterface;
 
 final class MatchBuilderTest extends TestCase
 {

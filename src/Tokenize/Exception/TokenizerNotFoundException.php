@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Tokenize\Exception;
+namespace Qlimix\Http\Router\Tokenize\Exception;
 
 use Exception;
 

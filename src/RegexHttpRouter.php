@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router;
+namespace Qlimix\Http\Router;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Qlimix\Router\Exception\RouteNotFoundException;
-use Qlimix\Router\Exception\RouterException;
-use Qlimix\Router\Regex\Exception\NoMatchFoundException;
-use Qlimix\Router\Regex\Matcher;
+use Qlimix\Http\Router\Exception\RouteNotFoundException;
+use Qlimix\Http\Router\Exception\RouterException;
+use Qlimix\Http\Router\Regex\Exception\NoMatchFoundException;
+use Qlimix\Http\Router\Regex\Matcher;
 use Throwable;
 
 final class RegexHttpRouter implements HttpRouterInterface

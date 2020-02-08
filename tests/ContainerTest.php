@@ -3,10 +3,10 @@
 namespace Qlimix\Tests\Router;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Container;
-use Qlimix\Router\Exception\ContainerException;
-use Qlimix\Router\Method;
-use Qlimix\Router\HttpRoute;
+use Qlimix\Http\Router\Container;
+use Qlimix\Http\Router\Exception\ContainerException;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\HttpRoute;
 
 final class ContainerTest extends TestCase
 {

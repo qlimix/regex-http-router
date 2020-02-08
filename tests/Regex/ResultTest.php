@@ -3,7 +3,7 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Regex\Result;
+use Qlimix\Http\Router\Regex\Result;
 
 final class ResultTest extends TestCase
 {

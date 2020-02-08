@@ -3,11 +3,11 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Builder;
-use Qlimix\Router\Match\Exception\BuilderException;
-use Qlimix\Router\Match\MatcherIteratorFactory;
-use Qlimix\Router\Tokenize\Token;
-use Qlimix\Router\Tokenize\Tokenized;
+use Qlimix\Http\Router\Match\Builder;
+use Qlimix\Http\Router\Match\Exception\BuilderException;
+use Qlimix\Http\Router\Match\MatcherIteratorFactory;
+use Qlimix\Http\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Tokenized;
 
 final class BuilderTest extends TestCase
 {

@@ -3,17 +3,17 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Container;
-use Qlimix\Router\Match\Match;
-use Qlimix\Router\Match\Tokens;
-use Qlimix\Router\Method;
-use Qlimix\Router\Regex\Builder;
-use Qlimix\Router\Regex\PlaceHolder;
-use Qlimix\Router\Regex\Translator;
-use Qlimix\Router\Regex\Translator\EscapeTranslator;
-use Qlimix\Router\Regex\Translator\PlaceHolderTranslator;
-use Qlimix\Router\HttpRoute;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Container;
+use Qlimix\Http\Router\Match\Match;
+use Qlimix\Http\Router\Match\Tokens;
+use Qlimix\Http\Router\Method;
+use Qlimix\Http\Router\Regex\Builder;
+use Qlimix\Http\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\Translator;
+use Qlimix\Http\Router\Regex\Translator\EscapeTranslator;
+use Qlimix\Http\Router\Regex\Translator\PlaceHolderTranslator;
+use Qlimix\Http\Router\HttpRoute;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class BuilderTest extends TestCase
 {

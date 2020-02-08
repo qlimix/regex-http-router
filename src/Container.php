@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router;
+namespace Qlimix\Http\Router;
 
-use Qlimix\Router\Exception\ContainerException;
+use Qlimix\Http\Router\Exception\ContainerException;
 
 final class Container
 {

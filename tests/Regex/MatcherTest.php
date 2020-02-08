@@ -3,9 +3,9 @@
 namespace Qlimix\Tests\Router\Regex;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Regex\Exception\InvalidRegexException;
-use Qlimix\Router\Regex\Exception\NoMatchFoundException;
-use Qlimix\Router\Regex\Matcher;
+use Qlimix\Http\Router\Regex\Exception\InvalidRegexException;
+use Qlimix\Http\Router\Regex\Exception\NoMatchFoundException;
+use Qlimix\Http\Router\Regex\Matcher;
 
 final class MatcherTest extends TestCase
 {

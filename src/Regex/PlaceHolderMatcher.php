@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex;
+namespace Qlimix\Http\Router\Regex;
 
-use Qlimix\Router\Regex\Exception\PlaceHolderMatchFailedException;
-use Qlimix\Router\Regex\Exception\PlaceHolderNotFoundException;
-use Qlimix\Router\Tokenize\Tokenizer;
+use Qlimix\Http\Router\Regex\Exception\PlaceHolderMatchFailedException;
+use Qlimix\Http\Router\Regex\Exception\PlaceHolderNotFoundException;
+use Qlimix\Http\Router\Tokenize\Tokenizer;
 use Throwable;
 use function preg_match;
 

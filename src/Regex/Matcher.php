@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex;
+namespace Qlimix\Http\Router\Regex;
 
-use Qlimix\Router\Regex\Exception\InvalidRegexException;
-use Qlimix\Router\Regex\Exception\NoMatchFoundException;
+use Qlimix\Http\Router\Regex\Exception\InvalidRegexException;
+use Qlimix\Http\Router\Regex\Exception\NoMatchFoundException;
 use Throwable;
 use function is_numeric;
 use function preg_match;

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router;
+namespace Qlimix\Http\Router;
 
 final class Method
 {

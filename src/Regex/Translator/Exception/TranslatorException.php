@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex\Translator\Exception;
+namespace Qlimix\Http\Router\Regex\Translator\Exception;
 
 use Exception;
 

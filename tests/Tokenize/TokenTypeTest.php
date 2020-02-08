@@ -3,7 +3,7 @@
 namespace Qlimix\Tests\Router\Tokenize;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Tokenize\TokenType;
+use Qlimix\Http\Router\Tokenize\TokenType;
 
 final class TokenTypeTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router;
+namespace Qlimix\Http\Router;
 
-use Qlimix\Router\Exception\ConfigurationException;
-use Qlimix\Router\Regex\PlaceHolder;
-use Qlimix\Router\Regex\PlaceHolderMatcher;
+use Qlimix\Http\Router\Exception\ConfigurationException;
+use Qlimix\Http\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\PlaceHolderMatcher;
 use Throwable;
 
 final class Configurator

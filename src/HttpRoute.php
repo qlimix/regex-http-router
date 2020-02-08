@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router;
+namespace Qlimix\Http\Router;
 
-use Qlimix\Router\Regex\PlaceHolder;
+use Qlimix\Http\Router\Regex\PlaceHolder;
 
 final class HttpRoute
 {

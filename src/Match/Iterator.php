@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\Match\Exception\IteratorException;
-use Qlimix\Router\Match\Exception\LastMatchException;
+use Qlimix\Http\Router\Match\Exception\IteratorException;
+use Qlimix\Http\Router\Match\Exception\LastMatchException;
 use Throwable;
 
 final class Iterator

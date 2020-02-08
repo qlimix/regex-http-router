@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Regex;
+namespace Qlimix\Http\Router\Regex;
 
-use Qlimix\Router\Regex\Translator\Exception\TranslatorException;
-use Qlimix\Router\Regex\Translator\TranslatorInterface;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Regex\Translator\Exception\TranslatorException;
+use Qlimix\Http\Router\Regex\Translator\TranslatorInterface;
+use Qlimix\Http\Router\Tokenize\Token;
 use Throwable;
 
 final class Translator

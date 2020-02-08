@@ -3,10 +3,10 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Exception\LastMatchException;
-use Qlimix\Router\Match\Matcher;
-use Qlimix\Router\Tokenize\Token;
-use Qlimix\Router\Tokenize\Tokenized;
+use Qlimix\Http\Router\Match\Exception\LastMatchException;
+use Qlimix\Http\Router\Match\Matcher;
+use Qlimix\Http\Router\Tokenize\Token;
+use Qlimix\Http\Router\Tokenize\Tokenized;
 
 final class MatcherTest extends TestCase
 {

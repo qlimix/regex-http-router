@@ -3,9 +3,9 @@
 namespace Qlimix\Tests\Router\Match;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\Router\Match\Exception\TokensException;
-use Qlimix\Router\Match\Tokens;
-use Qlimix\Router\Tokenize\Token;
+use Qlimix\Http\Router\Match\Exception\TokensException;
+use Qlimix\Http\Router\Match\Tokens;
+use Qlimix\Http\Router\Tokenize\Token;
 
 final class TokensTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\Router\Match;
+namespace Qlimix\Http\Router\Match;
 
-use Qlimix\Router\Match\Exception\LastMatchException;
-use Qlimix\Router\Tokenize\Tokenized;
+use Qlimix\Http\Router\Match\Exception\LastMatchException;
+use Qlimix\Http\Router\Tokenize\Tokenized;
 use function array_slice;
 use function count;
 

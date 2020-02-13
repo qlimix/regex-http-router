@@ -34,6 +34,14 @@ final class Matcher
             throw new NoMatchFoundException('No matches found in the regex');
         }
 
+        return $this->build($matches);
+    }
+
+    /**
+     * @param string[] $matches
+     */
+    private function build(array $matches): Result
+    {
         $id = null;
         $parameters = [];
         foreach ($matches as $index => $match) {
@@ -42,7 +50,7 @@ final class Matcher
                 break;
             }
 
-            if ($index === 0) {
+            if ($index === 0 || $match === '') {
                 continue;
             }
 

@@ -41,7 +41,6 @@ final class RegexHttpRouterTest extends TestCase
         $request->expects($this->once())
             ->method('getMethod')
             ->willReturn('get');
-        $this->expectException(RouterException::class);
 
         $request->expects($this->once())
             ->method('getRequestTarget')
@@ -57,7 +56,6 @@ final class RegexHttpRouterTest extends TestCase
         $request->expects($this->once())
             ->method('getMethod')
             ->willReturn('get');
-        $this->expectException(RouterException::class);
 
         $request->expects($this->once())
             ->method('getRequestTarget')
@@ -74,7 +72,6 @@ final class RegexHttpRouterTest extends TestCase
         $request->expects($this->once())
             ->method('getMethod')
             ->willReturn('post');
-        $this->expectException(RouterException::class);
 
         $request->expects($this->once())
             ->method('getRequestTarget')

@@ -63,18 +63,7 @@ final class Matcher implements MatcherInterface
                 );
             }
 
-            $newList = [];
-            foreach ($this->tokenizeds as $tokenized) {
-                if ($this->pointer > $tokenized->getTokenCount()-1) {
-                    continue;
-                }
-
-                if (!$this->tokenized->getTokens()[$this->pointer]->equals($tokenized->getTokens()[$this->pointer])) {
-                    continue;
-                }
-
-                $newList[] = $tokenized;
-            }
+            $newList = $this->getMatchingTokensList();
 
             $listSize = count($this->tokenizeds);
             $newListSize = count($newList);
@@ -88,5 +77,26 @@ final class Matcher implements MatcherInterface
         } while ($listSize === $newListSize || count($matchedTokens) === 0);
 
         return new Tokens($matchedTokens, null);
+    }
+
+    /**
+     * @return Tokenized[]
+     */
+    private function getMatchingTokensList(): array
+    {
+        $newList = [];
+        foreach ($this->tokenizeds as $tokenized) {
+            if ($this->pointer > $tokenized->getTokenCount()-1) {
+                continue;
+            }
+
+            if (!$this->tokenized->getTokens()[$this->pointer]->equals($tokenized->getTokens()[$this->pointer])) {
+                continue;
+            }
+
+            $newList[] = $tokenized;
+        }
+
+        return $newList;
     }
 }
